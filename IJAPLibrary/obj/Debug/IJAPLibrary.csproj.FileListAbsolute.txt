@@ -1,0 +1,11 @@
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\IJAPLibrary.dll.config
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\IJAPLibrary.dll
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\IJAPLibrary.pdb
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\EntityFramework.dll
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\EntityFramework.xml
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\obj\Debug\IJAPLibrary.csproj.CoreCompileInputs.cache
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\obj\Debug\IJAPLibrary.csproj.CopyComplete
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\obj\Debug\IJAPLibrary.dll
+C:\Users\vkota\source\repos\IJAP\IJAPLibrary\obj\Debug\IJAPLibrary.pdb

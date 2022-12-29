@@ -1,0 +1,12 @@
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\JobPostLibrary.dll.config
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\JobPostLibrary.dll
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\JobPostLibrary.pdb
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\EntityFramework.dll
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\EntityFramework.xml
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\obj\Debug\JobPostLibrary.csproj.CoreCompileInputs.cache
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\obj\Debug\JobPostLibrary.csproj.CopyComplete
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\obj\Debug\JobPostLibrary.dll
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\obj\Debug\JobPostLibrary.pdb
+C:\Users\vkota\source\repos\IJAP\JobPostLibrary\obj\Debug\JobPostLibrary.csproj.AssemblyReference.cache

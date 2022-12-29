@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IJAPDBModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 15.0.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="EName" Type="text" Nullable="false" />
+    <Property Name="Email" Type="text" Nullable="false" />
+    <Property Name="PhoneNo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Experience" Type="int" Nullable="false" />
+    <Property Name="Password" Type="text" Nullable="false" />
+    <Property Name="JobId" Type="char" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Title" Type="text" Nullable="false" />
+    <Property Name="Description" Type="text" Nullable="false" />
+    <Property Name="Salary" Type="numeric" Precision="29" Scale="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobSkill">
+    <Key>
+      <PropertyRef Name="JobId" />
+      <PropertyRef Name="SkillId" />
+    </Key>
+    <Property Name="JobId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="SkillId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Experience" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="SkillId" />
+    </Key>
+    <Property Name="SkillId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Name" Type="text" Nullable="false" />
+    <Property Name="Level" Type="char" MaxLength="1" />
+  </EntityType>
+  <Association Name="public_Employee_JobId_fkey">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="public_JobSkill_JobId_fkey">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="JobSkill">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="public_JobSkill_SkillId_fkey">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="SkillId" />
+      </Principal>
+      <Dependent Role="JobSkill">
+        <PropertyRef Name="SkillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IJAPDBModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="public" store:Type="Tables" />
+    <EntitySet Name="JobSkill" EntityType="Self.JobSkill" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Skill" EntityType="Self.Skill" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="public_Employee_JobId_fkey" Association="Self.public_Employee_JobId_fkey">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="public_JobSkill_JobId_fkey" Association="Self.public_JobSkill_JobId_fkey">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="JobSkill" EntitySet="JobSkill" />
+    </AssociationSet>
+    <AssociationSet Name="public_JobSkill_SkillId_fkey" Association="Self.public_JobSkill_SkillId_fkey">
+      <End Role="Skill" EntitySet="Skill" />
+      <End Role="JobSkill" EntitySet="JobSkill" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
