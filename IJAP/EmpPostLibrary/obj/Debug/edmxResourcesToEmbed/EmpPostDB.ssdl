@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpPostDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="char" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeePost">
+    <Key>
+      <PropertyRef Name="PostId" />
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="PostId" Type="int" Nullable="false" />
+    <Property Name="EmpId" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="AppliedDate" Type="date" />
+    <Property Name="ApplicationStatus" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="JobPost">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__EmployeeP__EmpId__36B12243">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="EmployeePost">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeP__PostI__35BCFE0A">
+    <End Role="JobPost" Type="Self.JobPost" Multiplicity="1" />
+    <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobPost">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="EmployeePost">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpPostDBModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePost" EntityType="Self.EmployeePost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobPost" EntityType="Self.JobPost" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EmployeeP__EmpId__36B12243" Association="Self.FK__EmployeeP__EmpId__36B12243">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeePost" EntitySet="EmployeePost" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeP__PostI__35BCFE0A" Association="Self.FK__EmployeeP__PostI__35BCFE0A">
+      <End Role="JobPost" EntitySet="JobPost" />
+      <End Role="EmployeePost" EntitySet="EmployeePost" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,12 @@
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EmpPostLibrary.dll.config
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EmpPostLibrary.dll
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EmpPostLibrary.pdb
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EntityFramework.dll
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EntityFramework.xml
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\obj\Debug\EmpPostLibrary.csproj.AssemblyReference.cache
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\obj\Debug\EmpPostLibrary.csproj.CoreCompileInputs.cache
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\obj\Debug\EmpPostLibrary.csproj.CopyComplete
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\obj\Debug\EmpPostLibrary.dll
+C:\Users\vkota\source\IJAP\IJAP\EmpPostLibrary\obj\Debug\EmpPostLibrary.pdb

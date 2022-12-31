@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmpPostDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeePost">
+          <Key>
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="AppliedDate" Type="date" />
+          <Property Name="ApplicationStatus" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="JobPost">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__EmployeeP__EmpId__36B12243">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeePost">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeP__PostI__35BCFE0A">
+          <End Role="JobPost" Type="Self.JobPost" Multiplicity="1" />
+          <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobPost">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="EmployeePost">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpPostDBModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeePost" EntityType="Self.EmployeePost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobPost" EntityType="Self.JobPost" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeP__EmpId__36B12243" Association="Self.FK__EmployeeP__EmpId__36B12243">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeePost" EntitySet="EmployeePost" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeP__PostI__35BCFE0A" Association="Self.FK__EmployeeP__PostI__35BCFE0A">
+            <End Role="JobPost" EntitySet="JobPost" />
+            <End Role="EmployeePost" EntitySet="EmployeePost" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmpPostDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EmployeePosts" Relationship="Self.FK__EmployeeP__EmpId__36B12243" FromRole="Employee" ToRole="EmployeePost" />
+        </EntityType>
+        <EntityType Name="EmployeePost">
+          <Key>
+            <PropertyRef Name="PostId" />
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AppliedDate" Type="DateTime" Precision="0" />
+          <Property Name="ApplicationStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeP__EmpId__36B12243" FromRole="EmployeePost" ToRole="Employee" />
+          <NavigationProperty Name="JobPost" Relationship="Self.FK__EmployeeP__PostI__35BCFE0A" FromRole="EmployeePost" ToRole="JobPost" />
+        </EntityType>
+        <EntityType Name="JobPost">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeePosts" Relationship="Self.FK__EmployeeP__PostI__35BCFE0A" FromRole="JobPost" ToRole="EmployeePost" />
+        </EntityType>
+        <Association Name="FK__EmployeeP__EmpId__36B12243">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeePost">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeP__PostI__35BCFE0A">
+          <End Role="JobPost" Type="Self.JobPost" Multiplicity="1" />
+          <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobPost">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="EmployeePost">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpPostDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeePosts" EntityType="Self.EmployeePost" />
+          <EntitySet Name="JobPosts" EntityType="Self.JobPost" />
+          <AssociationSet Name="FK__EmployeeP__EmpId__36B12243" Association="Self.FK__EmployeeP__EmpId__36B12243">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeePost" EntitySet="EmployeePosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeP__PostI__35BCFE0A" Association="Self.FK__EmployeeP__PostI__35BCFE0A">
+            <End Role="JobPost" EntitySet="JobPosts" />
+            <End Role="EmployeePost" EntitySet="EmployeePosts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmpPostDBModelStoreContainer" CdmEntityContainer="EmpPostDBEntities2">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="EmpPostDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePosts">
+            <EntityTypeMapping TypeName="EmpPostDBModel.EmployeePost">
+              <MappingFragment StoreEntitySet="EmployeePost">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
+                <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobPosts">
+            <EntityTypeMapping TypeName="EmpPostDBModel.JobPost">
+              <MappingFragment StoreEntitySet="JobPost">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

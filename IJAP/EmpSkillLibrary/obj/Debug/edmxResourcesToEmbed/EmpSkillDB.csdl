@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpSkillDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EmpSkills" Relationship="Self.FK__EmpSkill__EmpId__276EDEB3" FromRole="Employee" ToRole="EmpSkill" />
+  </EntityType>
+  <EntityType Name="EmpSkill">
+    <Key>
+      <PropertyRef Name="EmpId" />
+      <PropertyRef Name="SkillId" />
+    </Key>
+    <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SkillId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Experience" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__EmpSkill__EmpId__276EDEB3" FromRole="EmpSkill" ToRole="Employee" />
+    <NavigationProperty Name="Skill" Relationship="Self.FK__EmpSkill__SkillI__286302EC" FromRole="EmpSkill" ToRole="Skill" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="SkillId" />
+    </Key>
+    <Property Name="SkillId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EmpSkills" Relationship="Self.FK__EmpSkill__SkillI__286302EC" FromRole="Skill" ToRole="EmpSkill" />
+  </EntityType>
+  <Association Name="FK__EmpSkill__EmpId__276EDEB3">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmpSkill" Type="Self.EmpSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="EmpSkill">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmpSkill__SkillI__286302EC">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="EmpSkill" Type="Self.EmpSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="SkillId" />
+      </Principal>
+      <Dependent Role="EmpSkill">
+        <PropertyRef Name="SkillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpSkillDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="EmpSkills" EntityType="Self.EmpSkill" />
+    <EntitySet Name="Skills" EntityType="Self.Skill" />
+    <AssociationSet Name="FK__EmpSkill__EmpId__276EDEB3" Association="Self.FK__EmpSkill__EmpId__276EDEB3">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmpSkill" EntitySet="EmpSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmpSkill__SkillI__286302EC" Association="Self.FK__EmpSkill__SkillI__286302EC">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="EmpSkill" EntitySet="EmpSkills" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

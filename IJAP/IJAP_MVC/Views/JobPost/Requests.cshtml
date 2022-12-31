@@ -1,0 +1,53 @@
+﻿
+
+@model IEnumerable<EmpPostLibrary.EmployeePost>
+
+@{
+    ViewBag.Title = "Requests";
+}
+
+<h2>Requests</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PostId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppliedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppliedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationStatus)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Accept", "Accept", new {  id=item.PostId  }) |
+            @Html.ActionLink("Reject", "Reject", new {  id=item.PostId  })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpPostDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EmployeePosts" Relationship="Self.FK__EmployeeP__EmpId__36B12243" FromRole="Employee" ToRole="EmployeePost" />
+  </EntityType>
+  <EntityType Name="EmployeePost">
+    <Key>
+      <PropertyRef Name="PostId" />
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="PostId" Type="Int32" Nullable="false" />
+    <Property Name="EmpId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="AppliedDate" Type="DateTime" Precision="0" />
+    <Property Name="ApplicationStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeP__EmpId__36B12243" FromRole="EmployeePost" ToRole="Employee" />
+    <NavigationProperty Name="JobPost" Relationship="Self.FK__EmployeeP__PostI__35BCFE0A" FromRole="EmployeePost" ToRole="JobPost" />
+  </EntityType>
+  <EntityType Name="JobPost">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmployeePosts" Relationship="Self.FK__EmployeeP__PostI__35BCFE0A" FromRole="JobPost" ToRole="EmployeePost" />
+  </EntityType>
+  <Association Name="FK__EmployeeP__EmpId__36B12243">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="EmployeePost">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeP__PostI__35BCFE0A">
+    <End Role="JobPost" Type="Self.JobPost" Multiplicity="1" />
+    <End Role="EmployeePost" Type="Self.EmployeePost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobPost">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="EmployeePost">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpPostDBEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="EmployeePosts" EntityType="Self.EmployeePost" />
+    <EntitySet Name="JobPosts" EntityType="Self.JobPost" />
+    <AssociationSet Name="FK__EmployeeP__EmpId__36B12243" Association="Self.FK__EmployeeP__EmpId__36B12243">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeePost" EntitySet="EmployeePosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeP__PostI__35BCFE0A" Association="Self.FK__EmployeeP__PostI__35BCFE0A">
+      <End Role="JobPost" EntitySet="JobPosts" />
+      <End Role="EmployeePost" EntitySet="EmployeePosts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
